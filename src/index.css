@@ -17,3 +17,8 @@ body{
 span{
   cursor: pointer;
 }
+input{
+  border: none;
+  flex-grow: 1;
+  outline: none;
+}
