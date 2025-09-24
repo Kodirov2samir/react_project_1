@@ -1,0 +1,131 @@
+.site-menu {
+  left: 0;
+  height: 100vh;
+  background-color: #f2eae1;
+  width: 19%;
+  padding: 18px 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  transition: 1s all ease;
+  scrollbar-width: thin;
+  scrollbar-color:#FEAF00 #F2EAE1;
+}
+.menu-shortened{
+  width: 7%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 13px 13px;
+  height: 100vh;
+  background-color: #f2eae1;
+  transition: 1s all ease;
+}
+.menu-shortened img{
+  width: 50px;
+  height: 52px;
+}
+.menu-shortened h1{
+display: none;
+}
+.menu-shortened h2{
+  text-align: center;
+}
+.menu-shortened h3{
+  font-size: 12px;
+}
+.menu-shortened p{
+  font-size: 10px;
+}
+.guy-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.main-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border-left: 4px solid #f8d442;
+  padding-left: 12px;
+  margin-bottom: 45px;
+}
+.person-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.person-info img {
+  margin-bottom: 25px;
+}
+.person-info h2 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.person-info p {
+  color: #feaf00;
+  margin-bottom: 40px;
+}
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.chosen {
+  background-color: #feaf00;
+}
+.menu-list-item{
+  width: 100%;
+  padding:10px 20px;
+  border-radius: 15px;
+  width: 100%;
+  transition: 1s all ease;
+}
+.menu-list-item a{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-list-item:hover{
+  background-color: #f7df7f;
+}
+.disappear{
+  display: none;
+}
+.leave,.leave-short{
+ margin-top: 50px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+
+}
+
+.leave span{
+  margin-top: 4px;
+}
+.leave-short{
+  margin-top: 70px;
+}
+.leave-short h3{
+  font-size: 10px;
+}
+.item-title{
+font-weight: 400;
+font-style: Medium;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+}
+.list-short{
+display: flex;
+align-items: center;
+flex-direction: column;
+gap: 40px;
+}
+.passing{
+  display: none;
+}
