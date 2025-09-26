@@ -66,3 +66,31 @@
   color: white;
   cursor: pointer;
 }
+.user-info-wrap{
+  transition:1s all ease;
+  display: flex;
+  align-items: center;
+}
+.user-name{
+  margin-right: 155px;
+}
+.user-phone,.user-email{
+margin-right: 140px;
+}
+.user-image{
+  margin-right: 80px;
+}
+.user-image{
+width: 60px;
+height: 50px;
+border-radius: 10px;
+
+}
+thead{
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  width: 100%;
+  margin-left: 140px;
+  margin-top: 30px;
+}

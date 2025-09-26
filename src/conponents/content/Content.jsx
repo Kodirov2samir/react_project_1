@@ -69,13 +69,24 @@ function Content({ isOpen, setIsOpen }) {
             <button className='btn'>Submit</button>
            </form>
         </div>
+        <thead>
+          <th className='names'>name</th>
+          <th>email</th>
+          <th>phone</th>
+          <th>enroll</th>
+          <th>date</th>
+        </thead>
         <div className='hero-added'>  
           {ovr.map((item,index)=>{
             return(
-              <div key={index}>
-                <h2>{item.name}</h2>
-                <img src={item.img} alt="image of yours" />
-              </div>
+              <tbody className='user-info-wrap' key={index}>
+                <img className='user-image' src={item.img} alt="image of yours" />
+                <td className='user-name'>{item.name}</td>
+                <p className='user-email'>{item.email}</p>
+                <p className='user-phone'>{item.phone}</p>
+                <p className='user-enroll'>{item.enroll}</p>
+                <p className='user-date'>{item.date}</p>
+              </tbody>
             )
           })}   
         </div>
