@@ -16,10 +16,18 @@ function Content({ isOpen, setIsOpen }) {
   const [date, adddate] = useState("");
   const [img, addimage] = useState("");
   const [ovr, ovrArr] = useState([]);
+  const [change,changefunc] = useState(true)
+  const [editingItem, setEditingItem] = useState(null);
   useEffect(() => {
     axios.get("http://localhost:3001/workers").then((res) => ovrArr(res.data));
   }, []);
 
+   function makeFalse() {
+    changefunc(false)
+   }
+   function makeTrue() {
+    changefunc(true)
+   }
   const postToBack = () => {
     axios
       .post("http://localhost:3001/workers", {
@@ -38,6 +46,34 @@ function Content({ isOpen, setIsOpen }) {
       .then(() => ovrArr(ovr.filter((item) => item.id !== id)));
   };
 
+  const editInBack = (item) => {
+    setEditingItem(item);
+    addphone(item.phone);
+    addemail(item.email);
+    addname(item.name);
+    addenroll(item.enroll);
+    addimage(item.img);
+    adddate(item.date);
+    makeFalse()
+  };
+  const updateData = () => {
+    axios
+      .put(`http://localhost:3001/workers/${editingItem.id}`, {
+        name,
+        email,
+        enroll,
+        date,
+        img,
+        phone,
+      })
+      .then((res) =>
+        ovrArr(
+          ovr.map((item) => (item.id == editingItem.id ? res.data : item))
+        )
+      );
+      setEditingItem(null)
+      makeTrue()
+  };
   return (
     <main className="site-main">
       <header className="site-header">
@@ -59,7 +95,7 @@ function Content({ isOpen, setIsOpen }) {
           <div className="search-wrap">
             <input
               onChange={(e) =>
-                ovrArr(ovr.filter((item)=> item.name.includes(e.target.value)))
+                ovrArr(ovr.filter((item) => item.name.includes(e.target.value)))
               }
               type="text"
               placeholder="Search"
@@ -81,31 +117,37 @@ function Content({ isOpen, setIsOpen }) {
               onChange={(e) => addimage(e.target.value)}
               type="url"
               placeholder="image-link"
+              value={img}
             />
             <input
               onChange={(e) => addname(e.target.value)}
               type="text"
               placeholder="name"
+              value={name}
             />
             <input
               onChange={(e) => addemail(e.target.value)}
               type="email"
               placeholder="email"
+              value={email}
             />
             <input
               onChange={(e) => addphone(e.target.value)}
               type="number"
               placeholder="Phone number"
+              value={phone}
             />
             <input
               onChange={(e) => addenroll(e.target.value)}
               type="number"
               placeholder="enroll number"
+              value={enroll}
             />
             <input
               onChange={(e) => adddate(e.target.value)}
               type="date"
               placeholder="date-ofadmission"
+              value={date}
             />
             <button onClick={postToBack} className="btn">
               Submit
@@ -129,7 +171,7 @@ function Content({ isOpen, setIsOpen }) {
           <tbody className="user-info-wrap">
             {ovr.map((item, index) => {
               return (
-                <tr key={index}>
+                <tr className='row-main' key={index}>
                   <td>
                     <img
                       className="user-image"
@@ -143,12 +185,13 @@ function Content({ isOpen, setIsOpen }) {
                   <td className="user-enroll">{item.enroll}</td>
                   <td className="user-date">{item.date}</td>
                   <td>
-                    <span className="pencil">
+                    <span  onClick={() => editInBack(item)} className="pencil">
                       <GoPencil />
                     </span>
-                    <span onClick={() => deleteFromBack(item.id)}>
+                    <span className={change ?'empty':'disappear'} onClick={() => deleteFromBack(item.id)}>
                       <FiTrash />
                     </span>
+                    <span className={change ?'disappear' :'update-btn'} onClick={updateData}>update</span>
                   </td>
                 </tr>
               );
