@@ -37,6 +37,7 @@ function Content({ isOpen, setIsOpen }) {
       .delete(`http://localhost:3001/workers/${id}`)
       .then(() => ovrArr(ovr.filter((item) => item.id !== id)));
   };
+
   return (
     <main className="site-main">
       <header className="site-header">
@@ -56,7 +57,13 @@ function Content({ isOpen, setIsOpen }) {
         </div>
         <div className="search-main-wrap">
           <div className="search-wrap">
-            <input type="text" placeholder="Search" />
+            <input
+              onChange={(e) =>
+                ovrArr(ovr.filter((item)=> item.name.includes(e.target.value)))
+              }
+              type="text"
+              placeholder="Search"
+            />
             <span>
               <IoSearch />
             </span>
@@ -139,7 +146,7 @@ function Content({ isOpen, setIsOpen }) {
                     <span className="pencil">
                       <GoPencil />
                     </span>
-                    <span onClick={()=>deleteFromBack(item.id)}>
+                    <span onClick={() => deleteFromBack(item.id)}>
                       <FiTrash />
                     </span>
                   </td>
